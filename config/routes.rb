@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   end
 
   scope module: :user do
-    resources :post_images, only: [:new, :create, :index, :show]
+    resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+      resources :post_comments, only: [:create]
+    end
+    resources :users, only: [:show, :edit, :update]
   end
 
 
